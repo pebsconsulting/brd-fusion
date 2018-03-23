@@ -5,14 +5,14 @@ SHOW TABLES;
 --Replace _contact with any fused object type 
 SELECT * FROM fused_contact;
 
---Understand what fields are available for quering in a certain table
+--Understand what fields are available for querying in a certain table
 --Again, replace table with any table, by default the fused_ tables contain the universal mappings whereas the raw tables contain all fields on the object in that system 
 DESCRIBE fused_contact;
 
 
 --base single object queries, swap out column names at will and mess around with grouping, I recommend metabse to visualze
 --fused_contact, start with a simple grouping by a picklist 
---country, state, status, lead_score, lifecyclestage, hubspot_score
+--some available fields: country, state, status, lead_score, lifecyclestage, hubspot_score
 SELECT 
     lifecycle_stage,
     COUNT(lifecycle_stage)
@@ -30,7 +30,7 @@ GROUP BY lifecycle_stage
 ORDER BY COUNT(lifecycle_stage) DESC;
 
 --fused_opportunity
---is_won, is_closed, close_date, lead_source, amount, deal_stage
+--some available fields: is_won, is_closed, close_date, lead_source, amount, deal_stage
 SELECT 
     deal_stage, close_date, amount, external_sales_person_id
 FROM
