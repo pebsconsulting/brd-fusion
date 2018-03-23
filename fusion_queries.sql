@@ -14,18 +14,18 @@ DESCRIBE fused_contact;
 --fused_contact, start with a simple grouping by a picklist 
 --country, state, status, lead_score, lifecyclestage, hubspot_score
 SELECT 
-	lifecycle_stage,
-	COUNT(lifecycle_stage)
+    lifecycle_stage,
+    COUNT(lifecycle_stage)
 FROM
-	fused_contact
+    fused_contact
 GROUP BY lifecycle_stage ASC;
 
 --And you can make the output look nicer by defining clearer names to variables and ordering in a certain manner
 SELECT 
-	lifecycle_stage AS `LCS`,
-	COUNT(lifecycle_stage) AS `Count LCS`
+    lifecycle_stage AS `LCS`,
+    COUNT(lifecycle_stage) AS `Count LCS`
 FROM
-	fused_contact
+    fused_contact
 GROUP BY lifecycle_stage
 ORDER BY COUNT(lifecycle_stage) DESC;
 
@@ -56,15 +56,15 @@ FROM
 
 --joining 2 tables and grouping results
 SELECT 
-	fused_contact.hubspot_score AS `Score`,
-	fused_opportunity.deal_stage AS `Stage`,
-	fused_opportunity.close_date AS `Date`
+    fused_contact.hubspot_score AS `Score`,
+    fused_opportunity.deal_stage AS `Stage`,
+    fused_opportunity.close_date AS `Date`
 FROM
-	fused_opportunity
-		JOIN
-	links_contact_opportunity ON fused_contact.contact_id = links_contact_opportunity.contact_id
+    fused_opportunity
+        JOIN
+    links_contact_opportunity ON fused_contact.contact_id = links_contact_opportunity.contact_id
 WHERE
-	fused_opportunity.amount >= '10000'
+    fused_opportunity.amount >= '10000'
 GROUP BY `Score`, `Stage`, `Date`;
 
 
